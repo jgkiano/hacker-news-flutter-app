@@ -27,6 +27,8 @@ class ItemsBloc {
   Observable<bool> get isFetchingMoreItems => _fetchingMoreItemsOutput.stream;
   Function(String) get changeTopic => _currentTopic.sink.add;
   Function get fetchMoreItems => () => _fetchingMoreItems.add(true);
+  Function get retryFetchItems =>
+      () => _currentTopic.sink.add(_currentTopic.value);
 
   void _fetchMoreItems(bool value) async {
     try {
