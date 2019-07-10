@@ -71,8 +71,5 @@
 
 google-services.json
 GoogleService-Info.plist
-
-android/
-ios/
-build/
+key.properties
 
