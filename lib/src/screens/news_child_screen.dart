@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import '../widgets/top_header.dart';
 import '../widgets/loading_items_list.dart';
 import '../widgets/item_list.dart';
@@ -71,9 +72,8 @@ class NewsChildScreen extends StatelessWidget {
                 if (choice == SettingsConstant.DarkMode ||
                     choice == SettingsConstant.LightMode) {
                   return settingsBloc.toggleTheme();
-                }
-                if (choice == SettingsConstant.About) {
-                  return print("Kiano is awesome");
+                } else if (choice == SettingsConstant.About) {
+                  _showAboutDialog(context);
                 }
               },
               settings: generateSettings(settingsSnapshot),
@@ -103,6 +103,64 @@ class NewsChildScreen extends StatelessWidget {
       }
       return false;
     }).toList();
+  }
+
+  void _showAboutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: Text('Hey there! 👋'),
+          content: new Text(
+              "Thank you for checking out this app. Hope you're enjoying it!\n\nThis project is completely open source ❤️ so if you have any feature requests or bugs feel free to open a pull request or issue on GitHub\n\nWant to say hi? Send a tweet, would love to hear your feedback."),
+          actions: <Widget>[
+            FlatButton(
+              child: new Text("Open GitHub Repo"),
+              onPressed: _handleOpenRepo,
+            ),
+            FlatButton(
+              child: new Text("Say Hi"),
+              onPressed: _handleSayHi,
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _handleOpenRepo() async {
+    try {
+      await launch(
+        'https://github.com/jgkiano/hacker-news-flutter-app',
+        option: new CustomTabsOption(
+          toolbarColor: Colors.black87,
+          enableDefaultShare: true,
+          enableUrlBarHiding: true,
+          showPageTitle: true,
+          animation: null,
+        ),
+      );
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  void _handleSayHi() async {
+    try {
+      await launch(
+        'https://twitter.com/jgkiano',
+        option: new CustomTabsOption(
+          toolbarColor: Colors.black87,
+          enableDefaultShare: true,
+          enableUrlBarHiding: true,
+          showPageTitle: true,
+          animation: null,
+        ),
+      );
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
   void bottomSheet(BuildContext context, ItemsBloc itemsBloc) {
