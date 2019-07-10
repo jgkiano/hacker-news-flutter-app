@@ -4,6 +4,7 @@ import '../widgets/top_header.dart';
 import '../widgets/loading_items_list.dart';
 import '../widgets/item_list.dart';
 import '../widgets/item_list_spinner.dart';
+import '../widgets/network_error_message.dart';
 import '../blocs/items_bloc.dart';
 import '../blocs/settings_bloc.dart';
 import '../models/item.dart';
@@ -22,8 +23,9 @@ class NewsChildScreen extends StatelessWidget {
       stream: itemsBloc.items,
       builder: (_, AsyncSnapshot<List<Item>> snapshot) {
         if (snapshot.hasError) {
-          // TODO: create error widget
-          return Text("Error");
+          return NetWorkErrorMessage(
+            onRetry: itemsBloc.retryFetchItems,
+          );
         }
         if (!snapshot.hasData || snapshot.data == null) {
           return LoadingItemsList(
