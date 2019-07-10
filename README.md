@@ -1,16 +1,17 @@
-# hnr
+#HN: Reader Flutter App
 
-A new Flutter project.
+A Hacker News mobile app built with Dart and Flutter with some Firebase Cloud Function and Firestore magic.
 
-## Getting Started
+##Features
 
-This project is a starting point for a Flutter application.
+* View list of top HN stories with original article images
+* View list of top HN jobs
+* Offline capabilities
+* Dark mode 🌚 Because its 2019
 
-A few resources to get you started if this is your first Flutter project:
+##Under the hood
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Articles / Jobs are fetched using the public [HN API](https://github.com/HackerNews/API) every 4 hours by a couple of Firebase cloud functions. The Cloud Functions then scrap the webpages of the articles to obtain images and descriptions of the articles. The result of this is then stored into Firebase Firestore which the app uses to display the articles / jobs.
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+
+
