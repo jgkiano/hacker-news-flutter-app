@@ -2,6 +2,8 @@
 
 A Hacker News mobile app built with Dart and Flutter with some Firebase Cloud Function and Firestore magic.
 
+[Download from Google Play Store](https://play.google.com/store/apps/details?id=me.kiano.hnr)
+
 ![alt sceenshot](https://storage.googleapis.com/me-kiano-static/grouped-screens.jpg)
 
 ## Features
