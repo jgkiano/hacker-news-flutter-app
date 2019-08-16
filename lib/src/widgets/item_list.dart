@@ -84,10 +84,9 @@ class _ItemsListState extends State<ItemsList> {
 
   _scrollListender() {
     double scrollMax = _scrollController.position.maxScrollExtent;
-    double scrollDelta = scrollMax * 0.75;
+    double scrollDelta = scrollMax * 0.5;
     double currentScroll = _scrollController.position.pixels;
-    double scrollDiff = scrollMax - currentScroll;
-    if (scrollDiff <= scrollDelta && widget.onScrollBottom != null) {
+    if (currentScroll >= scrollDelta && widget.onScrollBottom != null) {
       //TODO: throttle this call to once every x seconds
       widget.onScrollBottom();
     }
