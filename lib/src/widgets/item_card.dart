@@ -96,8 +96,7 @@ class _ItemCardState extends State<ItemCard> {
   }
 
   void handleShareTap(Item item) {
-    final String message =
-        "${item.url} \n\nFor more tech news download TechStories App on Google Play Store";
+    final String message = "${item.title}\n\n${item.url}";
     Share.share(message);
   }
 
