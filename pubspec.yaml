@@ -25,15 +25,15 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
-  rxdart: ^0.22.0
+  rxdart: ^0.22.1+1
 
   provider: ^3.0.0+1
 
-  share: ^0.6.1+1
+  share: ^0.6.2+1
 
-  cloud_firestore: ^0.12.5+2
+  cloud_firestore: ^0.12.9
 
-  timeago: ^2.0.16
+  timeago: ^2.0.18
 
   flutter_custom_tabs: ^0.6.0
 
