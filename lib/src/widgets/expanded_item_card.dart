@@ -85,7 +85,7 @@ class ExpandedItemCard extends StatelessWidget with Utils {
           buildTitle(),
         ],
       ),
-      subtitle: buildSubtitle(),
+      subtitle: item.description != null ? buildDescription() : null,
     );
   }
 
@@ -96,9 +96,24 @@ class ExpandedItemCard extends StatelessWidget with Utils {
         top: 15.0,
       ),
       child: Text(
-        'posted ${timeago.format(item.date)}',
+        'Posted ${timeago.format(item.date)} by ${item.author}',
         style: TextStyle(
           fontSize: 12.0,
+        ),
+      ),
+    );
+  }
+
+  Widget buildDescription() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10.0),
+      child: Text(
+        item.description,
+        overflow: TextOverflow.ellipsis,
+        maxLines: 3,
+        style: TextStyle(
+          // color: Colors.white.withOpacity(0.9),
+          fontSize: 14.0,
         ),
       ),
     );

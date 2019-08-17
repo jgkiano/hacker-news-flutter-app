@@ -90,7 +90,22 @@ class ColorCard extends StatelessWidget {
           buildTitle(),
         ],
       ),
-      subtitle: buildSubtitle(),
+      subtitle: item.description != null ? buildDescription() : null,
+    );
+  }
+
+  Widget buildDescription() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10.0, bottom: 15.0),
+      child: Text(
+        item.description,
+        overflow: TextOverflow.ellipsis,
+        maxLines: 3,
+        style: TextStyle(
+          color: Colors.white.withOpacity(0.9),
+          fontSize: 14.0,
+        ),
+      ),
     );
   }
 
@@ -101,7 +116,7 @@ class ColorCard extends StatelessWidget {
         top: 15.0,
       ),
       child: Text(
-        'posted ${timeago.format(item.date)}',
+        'Posted ${timeago.format(item.date)} by ${item.author}',
         style: TextStyle(
           fontSize: 12.0,
           color: Colors.white70,
@@ -117,18 +132,6 @@ class ColorCard extends StatelessWidget {
         color: Colors.white,
         fontFamily: 'NunitoSans',
         fontSize: 18.0,
-      ),
-    );
-  }
-
-  Widget buildSubtitle() {
-    return Container(
-      child: Text(
-        'By ${item.author}',
-        style: TextStyle(
-          fontSize: 12.0,
-          color: Colors.white70,
-        ),
       ),
     );
   }
